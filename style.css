@@ -862,3 +862,95 @@ h1 span {
     background-color: #077b32;
     filter: drop-shadow(0 0 10px #077b32);
 }
+
+/* Responsiveness & safer heights */
+body {
+    width: 100%;
+    min-height: 100vh; /* ganti height:100vh ke min-height */
+    background-color: black;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Jangan pakai fixed section height — biarkan konten menentukan tinggi */
+section {
+    width: 100%;
+    min-height: 60vh;
+    padding: 60px 0;
+    box-sizing: border-box;
+}
+
+/* Main container becomes column on narrow screens and uses gap */
+.main-container {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+/* Buat image jadi responsif dan bundar tanpa ukuran px kaku */
+.main-container .image {
+    width: min(320px, 45%);
+    max-width: 400px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 50px #077b32;
+}
+
+.main-container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Konten jadi full width di mobile */
+.main-container .content {
+    color: white;
+    width: min(600px, 90%);
+}
+
+/* Projek grid — hapus margin besar, gunakan padding & gap */
+.Projek .Projek_image_box {
+    width: 95%;
+    margin: 0 auto;
+    padding: 30px 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Pastikan project images adaptif */
+.Projek .Projek_image_box .Projek_image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Perbaiki nav spacing agar nyaman di touchscreen */
+.nav-container {
+    width: 100%;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tampilkan hamburger lebih awal untuk testing mobile */
+@media (max-width: 1024px) {
+    .nav-container .links { display: none; }
+    .hamburg, .cancel { display: block; }
+}
+
+/* Atur tombol sosial lebih kecil di hp */
+.social-links i {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.2rem;
+}
